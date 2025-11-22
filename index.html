@@ -1,178 +1,695 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Выкуп автомобилей 24/7</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Срочный выкуп автомобилей</title>
+<style>
+body, html { margin: 0; padding: 0; font-family: Arial, sans-serif; scroll-behavior: smooth; }
+body { 
+    background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed; 
+    background-size: cover; 
+    color: white; 
+}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Montserrat", Arial, sans-serif;
-            background: #f2f2f2;
-            color: #222;
-        }
+section, .hero-text, .hero-form, .card, .urgent-container .info, .form, footer, #faq {
+    background: rgba(0, 0, 0, 0.4); 
+    border-radius: 12px;
+    padding: 20px;
+}
+h1, h2, h3, p, li, label { text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
 
-        /* ====== HEADER ====== */
-        header {
-            width: 100%;
-            padding: 15px 25px;
-            background: #111;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
-        }
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(17,17,17,0.9);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 30px;
+  z-index: 100;
+  gap: 12px;
+}
 
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
+.header-logo {
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+}
 
-        .header-links a {
-            margin-left: 12px;
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            background: #2e2e2e;
-            transition: 0.2s;
-        }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 100%;
+}
 
-        .header-links a:hover {
-            background: #3CB371;
-        }
+.header-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  min-width: 0;
+}
 
-        /* ====== HERO SECTION ====== */
-        .hero {
-            margin-top: 70px;
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 140px 25px;
-            color: white;
-        }
+.header-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 4px 10px;
+  border: 2px solid #3CB371;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
 
-        .hero h1 {
-            font-size: 50px;
-            margin-bottom: 15px;
-            font-weight: 700;
-            max-width: 500px;
-        }
+.header-links a:hover {
+  background: #3CB371;
+  color: #fff;
+  transform: scale(1.05);
+}
 
-        .hero p {
-            font-size: 22px;
-            opacity: 0.9;
-            max-width: 400px;
-            line-height: 1.5;
-        }
+.header-icons {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
 
-        /* ====== FORM ====== */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
+.header-icons a {
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
 
-        .form-box {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
+.header-icons a:hover {
+  background: #3CB371;
+  color: white;
+  transform: scale(1.1);
+}
 
-        h2 {
-            text-align: center;
-            margin-top: 0;
-            font-size: 26px;
-        }
+/* HERO */
+.hero { margin-top: 50px; min-height: 90vh; display: flex; align-items: center; justify-content: center; padding: 0 20px; }
+.hero-inner { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1200px; width: 100%; align-items: center; justify-content: center; }
+.hero-text { flex: 1 1 400px; }
+.hero-text h1 { font-size: 48px; margin-bottom: 15px; }
+.hero-text p { font-size: 20px; line-height: 1.4; }
+.hero-form { flex: 1 1 350px; padding: 25px; }
+.hero-form h2 { margin-top:0; margin-bottom:15px; font-size:22px; }
+.hero-form input, .hero-form textarea {
+    width: 96.5%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+.hero-form input::placeholder, .hero-form textarea::placeholder { color: #eee; }
+.hero-form button {
+    width: 100%;
+    padding: 14px;
+    background: #3CB371;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
 
-        input, textarea {
-            width: 100%;
-            margin: 10px 0;
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
+/* ABOUT SECTION */
+.about { padding: 80px 20px; color: white; }
+.about-inner { max-width: 1200px; margin: auto; }
+.about-text h2 { font-size: 36px; margin-bottom: 20px; }
+.about-text p { font-size: 20px; line-height: 1.5; margin-bottom: 30px; }
+.about-points { list-style: none; padding: 0; margin: 0; }
+.about-points li {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.about-points li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  background: #3CB371;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-size: 16px;
+}
 
-        button {
-            width: 100%;
-            background: #3CB371;
-            color: white;
-            padding: 16px;
-            border-radius: 8px;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+.about-company {
+  padding: 80px 20px;
+  color: white;
+}
 
-        button:hover {
-            background: #34a164;
-        }
+.about-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
 
-        /* ====== FOOTER ====== */
-        footer {
-            margin-top: 50px;
-            padding: 25px;
-            background: #111;
-            color: white;
-            text-align: center;
-        }
+.about-image img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  display: block;
+}
 
-        /* ====== MOBILE ====== */
-        @media(max-width: 700px) {
-            .hero h1 { font-size: 34px; }
-            .hero p { font-size: 18px; }
-        }
-    </style>
+.about-content {
+  flex: 1 1 450px;
+  max-width: 600px;
+}
+
+.about-content h2 {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.about-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.about-points li {
+  margin-bottom: 14px;
+  padding-left: 32px;
+  position: relative;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.about-points li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #3CB371;
+  font-size: 18px;
+}
+
+.about-button {
+  display: inline-block;
+  background: white;
+  color: black;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.about-button:hover {
+  background: #3CB371;
+  color: white;
+}
+
+@media(max-width: 768px) {
+  .about-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-content {
+    max-width: 100%;
+  }
+  .about-points li {
+    text-align: left;
+  }
+}
+
+/* ADVANTAGES SECTION */
+.advantages {
+  padding: 80px 20px;
+  color: white;
+  text-align: center;
+}
+
+.advantages .section-title {
+  font-size: 36px;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+}
+
+.card {
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 260px;
+  max-width: 380px;
+  width: 100%;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.icon {
+  background: #dfe4ff;
+  color: #111;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  margin: 0 0 15px 0;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #ccc;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* HOW WE WORK */ 
+.how-we-work {
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.how-we-work .section-title {
+  font-size: 36px;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.how-we-work .cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.how-we-work .card {
+  width: 260px;
+  padding: 28px 24px 32px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.step-label {
+  background: white;
+  color: black;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  user-select: none;
+}
+
+.how-we-work .card h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+}
+
+.how-we-work .card p {
+  font-size: 15px;
+  color: #ccc;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .how-we-work .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .how-we-work .card {
+    width: 100%;
+    max-width: 480px;
+  }
+}
+
+/* URGENT BUY FORM */
+.urgent-buy { padding:60px 20px; color:white; }
+.urgent-container { max-width: 1100px; margin:auto; display:flex; gap:60px; flex-wrap:wrap; align-items:flex-start; }
+.urgent-container .info { flex:1 1 400px; }
+.urgent-container h1 { font-size:36px; font-weight:700; margin-bottom:20px; line-height:1.2; }
+.urgent-container p { font-size:16px; margin-bottom:30px; line-height:1.4; }
+.contacts { list-style:none; padding:0; font-size:16px; line-height:1.5; color:#ccc; }
+.contacts li { display:flex; align-items:center; margin-bottom:12px; }
+.contact-icon { width:22px; height:22px; margin-right:12px; filter: brightness(0) invert(1); }
+.urgent-container .form { flex:1 1 350px; padding:30px 25px; display:flex; flex-direction:column; }
+.form input, .form textarea { background:#111; border:none; border-radius:8px; padding:12px 15px; margin-bottom:20px; color:white; font-size:15px; resize:vertical; }
+.form input::placeholder, .form textarea::placeholder { color:#666; }
+.form button { background:#3CB371; color:white; font-weight:700; padding:15px; border:none; border-radius:10px; cursor:pointer; font-size:16px; transition:background 0.3s ease; }
+.form button:hover { background:#2e8b57; }
+.note { font-size:13px; color:#aaa; margin-top:15px; text-align:center; }
+
+/* FAQ */
+#faq {
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#faq .section-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.faq-list {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.faq-item {
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.accordion {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 18px 24px;
+  font-size: 18px;
+  text-align: left;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.accordion::after {
+  content: "▾";
+  font-size: 16px;
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.accordion.active::after {
+  transform: rotate(-180deg);
+}
+
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+  padding: 0 24px;
+}
+
+.panel p {
+  margin: 0 0 18px;
+  padding-top: 8px;
+  padding-bottom: 18px;
+  font-size: 15px;
+  color: #f3f3f3;
+  line-height: 1.5;
+}
+
+/* FOOTER */
+footer { padding:40px 20px; display:flex; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; gap:30px; }
+footer .column { flex:1; min-width:250px; color:#ccc; }
+footer h3 { color:white; }
+footer a { color:#ccc; text-decoration:none; }
+footer a:hover { color:#3CB371; }
+footer button {
+    background-color:#3CB371; 
+    color:white; 
+    border:none; 
+    padding:12px 20px; 
+    border-radius:6px; 
+    cursor:pointer; 
+    font-size:14px;
+    margin-top:10px;
+    transition: background-color 0.3s;
+}
+footer button:hover { background-color:#2e8b57; }
+
+@media(max-width: 1000px){ .cards { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width: 700px){ 
+  .hero-inner, .urgent-container { flex-direction: column; align-items: center; } 
+  .hero-text, .hero-form { flex: 1 1 100%; } 
+  .cards { grid-template-columns: 1fr; } 
+  .accordion, .panel { width: 100%; } 
+  header { padding: 6px 10px 10px; }
+  .header-right { width: 100%; justify-content: flex-end; }
+}
+</style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-    <div class="logo">Выкуп авто 24/7</div>
-
-    <div class="header-links">
-        <a href="https://wa.me/79990000000">WA</a>
-        <a href="https://t.me/username">TG</a>
-        <a href="tel:+79990000000">📞</a>
+    <div class="header-logo">Выкуп авто 24/7</div>
+    <div class="header-right">
+        <div class="header-links">
+            <a href="#about">О нас</a>
+            <a href="#advantages">Преимущества</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contacts">Контакты</a>
+        </div>
+        <div class="header-icons">
+            <a href="https://wa.me/79990000000" target="_blank" title="WhatsApp">🟢</a>
+            <a href="https://t.me/username" target="_blank" title="Telegram">✈️</a>
+            <a href="tel:+79990000000" title="Позвонить">📞</a>
+        </div>
     </div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
-    <h1>Срочный выкуп автомобилей</h1>
-    <p>Оценка за 5 минут • Работаем 24/7 • Приезжаем быстро • Дороже перекупов</p>
-</div>
-
-<!-- FORM -->
-<div class="container">
-    <div class="form-box">
-        <h2>Оставить заявку</h2>
-
-        <form action="https://formspree.io/f/XXXXXXXX" method="POST">
-            <input type="text" name="name" placeholder="Ваше имя" required>
-            <input type="tel" name="phone" placeholder="Телефон" required>
-            <input type="text" name="car" placeholder="Марка и модель авто" required>
-            <textarea name="details" rows="4" placeholder="Год, состояние, пробег"></textarea>
-            <button type="submit">Отправить</button>
-        </form>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>Срочный выкуп автомобилей</h1>
+            <p>Оценка за 5 минут • Работаем 24/7 • Приезжаем быстро • Дороже перекупов</p>
+        </div>
+        <div class="hero-form">
+            <h2>Оставить заявку</h2>
+            <form>
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Телефон" required>
+                <input type="text" name="car" placeholder="Марка и модель авто" required>
+                <textarea name="details" rows="4" placeholder="Год, состояние, пробег"></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
     </div>
 </div>
 
+<section class="about-company" id="about">
+  <div class="about-inner">
+    <div class="about-image">
+      <img src="https://9fb371e4-4c0.tochka-ai.ru/images/about_service.jpg" alt="Автовыкуп" />
+    </div>
+    <div class="about-content">
+      <h2>О компании<br>Автовыкуп 24/7</h2>
+      <p>
+        Мы специализируемся на быстром и безопасном выкупе автомобилей в Москве и Московской области.
+        Наша команда работает круглосуточно, чтобы каждый клиент мог получить честную оценку и оперативную сделку без лишних хлопот.
+      </p>
+
+      <ul class="about-points">
+        <li>Оценка автомобиля за 15 минут — бесплатно и без обязательств</li>
+        <li>Мгновенный выкуп любых авто: от новых до с пробегом, аварийных и кредитных</li>
+        <li>Работаем 24/7 — приедем в любое удобное время, даже ночью</li>
+        <li>Юридическое сопровождение и оформление документов — в один день</li>
+        <li>Гарантированная выплата сразу на месте</li>
+      </ul>
+
+      <a href="#contacts" class="about-button">Узнать стоимость выкупа</a>
+    </div>
+  </div>
+</section>
+
+<section class="advantages" id="advantages">
+  <h2 class="section-title">Наши преимущества</h2>
+  <div class="cards">
+    <div class="card"><div class="icon">⏰</div><h3>Работаем 24/7</h3><p>Выкуп авто круглосуточно, без выходных — всегда готовы помочь.</p></div>
+    <div class="card"><div class="icon">👍</div><h3>Честная оценка</h3><p>Объективная оценка авто с учетом всех особенностей.</p></div>
+    <div class="card"><div class="icon">💵</div><h3>Мгновенная выплата</h3><p>После сделки вы получаете деньги наличными или на карту.</p></div>
+    <div class="card"><div class="icon">📍</div><h3>Москва и область</h3><p>Выезд к клиенту по Москве и МО. Экономим ваше время.</p></div>
+    <div class="card"><div class="icon">✔️</div><h3>Оформление за 20 минут</h3><p>Быстрое оформление всех документов.</p></div>
+    <div class="card"><div class="icon">🚗</div><h3>Выезд специалиста</h3><p>Наши эксперты приезжают для оценки и консультации на месте.</p></div>
+  </div>
+</section>
+
+<section class="how-we-work">
+  <h2 class="section-title">Как мы работаем</h2>
+  <div class="cards">
+    <div class="card"><div class="step-label">Шаг 1</div><h3>Оперативная связь 24/7</h3><p>Звоните или оставляйте заявку в любое время суток.</p></div>
+    <div class="card"><div class="step-label">Шаг 2</div><h3>Оценка на месте</h3><p>Наш специалист выезжает для осмотра авто.</p></div>
+    <div class="card"><div class="step-label">Шаг 3</div><h3>Оформление документов</h3><p>Все юридические вопросы мы берём на себя.</p></div>
+    <div class="card"><div class="step-label">Шаг 4</div><h3>Моментальная выплата</h3><p>Деньги сразу после заключения сделки.</p></div>
+  </div>
+</section>
+
+<section class="urgent-buy" id="contacts">
+  <div class="urgent-container">
+    <div class="info">
+      <h1>Срочный выкуп авто в Москве и МО 24/7</h1>
+      <p>Оценим и купим ваш автомобиль за 30 минут, даже ночью и в выходные. Работаем быстро, честно и безопасно.<br>
+      Бесплатный выезд специалиста и моментальная выплата.</p>
+      <ul class="contacts">
+        <li><img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Телефон" class="contact-icon"> +7 (495) 000-00-00</li>
+        <li><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Почта" class="contact-icon"> info@vykuppro24.ru</li>
+        <li><img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Адрес" class="contact-icon"> Москва, ул. Примерная, д. 1</li>
+      </ul>
+    </div>
+    <form class="form">
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="text" placeholder="Телефон или e-mail" required>
+      <textarea placeholder="Кратко о вашем автомобиле" rows="4"></textarea>
+      <button type="submit">Отправить заявку</button>
+      <div class="note">Мы свяжемся с вами в течение 10 минут</div>
+    </form>
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="section-title">Часто задаваемые вопросы</h2>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="accordion">Как происходит выкуп автомобиля в Москве и области?</button>
+      <div class="panel">
+        <p>После вашей заявки мы оперативно связываемся, оцениваем авто, выезжаем на место и оформляем все документы на месте. Вы получаете деньги сразу после подписания договора.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="accordion">Какие автомобили вы выкупаете?</button>
+      <div class="panel">
+        <p>Мы выкупаем легковые автомобили, внедорожники, коммерческий транспорт различных марок, годов выпуска и в любом техническом состоянии — даже после ДТП или с пробегом.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="accordion">Сколько времени занимает весь процесс?</button>
+      <div class="panel">
+        <p>Среднее время — от 30 минут до 2 часов. Мы работаем 24/7, поэтому готовы выкупить ваш автомобиль даже ночью или в выходные.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="accordion">Какие документы необходимы для продажи автомобиля?</button>
+      <div class="panel">
+        <p>Для сделки потребуется паспорт, ПТС и СТС. В случае отсутствия одного из документов мы поможем решить вопрос индивидуально.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="accordion">Могу ли я получить консультацию перед продажей?</button>
+      <div class="panel">
+        <p>Да, вы всегда можете получить бесплатную консультацию по телефону или через форму обратной связи на сайте. Мы подробно расскажем о всех этапах и ответим на ваши вопросы.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <footer>
-    © 2025 • Срочный выкуп авто • Работаем круглосуточно
+  <div class="column">
+    <h3>Контакты</h3>
+    <p>Москва, ул. Примерная, д. 1</p>
+    <p>+7 (495) 000-00-00</p>
+    <p>info@vykuppro24.ru</p>
+  </div>
+  <div class="column">
+    <h3>Навигация</h3>
+    <p><a href="#about">О нас</a></p>
+    <p><a href="#advantages">Преимущества</a></p>
+    <p><a href="#faq">FAQ</a></p>
+    <p><a href="#contacts">Контакты</a></p>
+  </div>
+  <div class="column">
+    <h3>Действуйте сейчас</h3>
+    <button>Оставить заявку</button>
+  </div>
 </footer>
+
+<script>
+const acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    const panel = this.nextElementSibling;
+    if (panel.style.maxHeight) panel.style.maxHeight = null;
+    else panel.style.maxHeight = panel.scrollHeight + "px";
+  });
+}
+</script>
 
 </body>
 </html>
